@@ -45,7 +45,7 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
             sx={{
                 width: "100%",
                 borderRadius: 1,
-                backgroundColor: theme.palette.mode === 'light' ?"#fff": theme.palette.background.default
+                backgroundColor: theme.palette.mode === 'light' ?"#fff": theme.palette.background.paper
             }}>
             <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
                 <Stack direction={"row"} spacing={2}>
@@ -81,7 +81,7 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: 20,
-    backgroundColor: alpha(theme.palette.background.default, 1),
+    backgroundColor: alpha(theme.palette.background.paper, 1),
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
@@ -114,7 +114,7 @@ const Chats = () => {
             sx={{
                 position: "relative",
                 width: 320,
-                backgroundColor: theme.palette.mode === "light" ? "#f8faff":theme.palette.background.paper,
+                backgroundColor: theme.palette.mode === "light" ? "#F8FAFF":theme.palette.background.default,
                 boxShadow: "0px 0px 2px rgba(0,0,0,0.25)"
             }}>
             <Stack p={3} spacing={2} sx={{ height: "100vh" }}>
