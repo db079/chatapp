@@ -1,8 +1,21 @@
 import React from 'react';
-import { Box, Divider, Stack, Typography, Link, IconButton } from "@mui/material";
+import { Box, Divider, Stack, Typography, Link, IconButton, Menu, MenuItem } from "@mui/material";
 import { useTheme } from "@mui/material/styles"
-import { DownloadSimple, Image } from 'phosphor-react';
+import { DotsThreeVertical, DownloadSimple, Image } from 'phosphor-react';
+import { Message_options } from '../../data/index'
 
+
+const Timeline = ({ e }) => {
+    const theme = useTheme();
+
+    return (
+        <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
+            <Divider width="46% " />
+            <Typography variant='caption' sx={{ color: theme.palette.text }}>{e.text}</Typography>
+            <Divider width="46%" />
+        </Stack>
+    )
+}
 
 const DocMsg = ({ e }) => {
     const theme = useTheme();
@@ -10,7 +23,7 @@ const DocMsg = ({ e }) => {
         <Stack direction={"row"} justifyContent={e.incoming ? "start" : "end"}>
             <Box p={1.5} sx={{ borderRadius: 1.5, width: "max-content" }} backgroundColor={e.incoming ? theme.palette.background.default : theme.palette.primary.main}>
                 <Stack spacing={2}>
-                <Stack p={2} spacing={3} direction={"row"} alignItems={"center"} sx={{ backgroundColor: theme.palette.background.paper, borderRadius: 1 }}>
+                    <Stack p={2} spacing={3} direction={"row"} alignItems={"center"} sx={{ backgroundColor: theme.palette.background.paper, borderRadius: 1 }}>
                         <Image size={48} />
                         <Typography variant='caption'>Abstract.png</Typography>
                         <IconButton>
@@ -21,10 +34,10 @@ const DocMsg = ({ e }) => {
 
                 </Stack>
             </Box>
+            <MesgOption />
         </Stack>
     )
 }
-
 
 const LinkMsg = ({ e }) => {
     const theme = useTheme();
@@ -42,10 +55,10 @@ const LinkMsg = ({ e }) => {
                     </Stack>
                 </Stack>
             </Box>
+            <MesgOption />
         </Stack>
     )
 }
-
 
 const ReplyMsg = ({ e }) => {
     const theme = useTheme();
@@ -59,6 +72,7 @@ const ReplyMsg = ({ e }) => {
                     <Typography variant='body2' color={e.incoming ? theme.palette.text : "#fff"}>{e.reply}</Typography>
                 </Stack>
             </Box>
+            <MesgOption />
         </Stack>
     )
 }
@@ -75,22 +89,10 @@ const MediaMsg = ({ e }) => {
                     </Typography>
                 </Stack>
             </Box>
+            <MesgOption />
         </Stack>
     )
 };
-
-
-const Timeline = ({ e }) => {
-    const theme = useTheme();
-
-    return (
-        <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
-            <Divider width="46% " />
-            <Typography variant='caption' sx={{ color: theme.palette.text }}>{e.text}</Typography>
-            <Divider width="46%" />
-        </Stack>
-    )
-}
 
 const TextMsg = ({ e }) => {
     const theme = useTheme();
@@ -101,11 +103,47 @@ const TextMsg = ({ e }) => {
                     {e.message}
                 </Typography>
             </Box>
+            {/* message option */}
+            <MesgOption />
         </Stack>
     )
 }
 
-
+const MesgOption = () => {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    return (
+        <>
+            <DotsThreeVertical id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick} size={20} 
+            />
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
+            >
+                <Stack spacing={1} px={1}>
+                    {Message_options.map((e) => (
+                        <menuItem onClick={handleClick}>{e.title}</menuItem>
+                    ))}
+                </Stack>
+            </Menu>
+        </>
+    )
+}
 
 
 export { Timeline, TextMsg, MediaMsg, ReplyMsg, LinkMsg, DocMsg }
