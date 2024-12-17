@@ -45,7 +45,62 @@ const Nav_Setting = [
     icon: <GearSix />,
   },
 ];
-
+const MembersList = [
+  {
+    id: 0,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online : true
+  },
+  {
+    id: 1,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online : true
+  },
+  {
+    id: 2,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online : false
+  },
+  {
+    id: 3,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online : false
+  },
+]
+const CallLogs = [
+  {
+    id: 0,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    incoming : true,
+    missed : true
+  },
+  {
+    id: 1,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    incoming : true,
+    missed : false
+  },
+  {
+    id: 2,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    incoming : false,
+    missed : true
+  },
+  {
+    id: 3,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    incoming : false,
+    missed : false
+  },
+]
 const ChatList = [
   {
     id: 0,
@@ -228,7 +283,7 @@ const SHARED_LINKS = [
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
-  }, 
+  },
   {
     type: "msg",
     subtype: "link",
@@ -236,7 +291,7 @@ const SHARED_LINKS = [
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
-  }, 
+  },
   {
     type: "msg",
     subtype: "link",
@@ -244,7 +299,7 @@ const SHARED_LINKS = [
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
-  }, 
+  },
   {
     type: "msg",
     subtype: "link",
@@ -252,7 +307,7 @@ const SHARED_LINKS = [
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
-  }, 
+  },
 ];
 
 const SHARED_DOCS = [
@@ -296,5 +351,7 @@ export {
   Chat_History,
   Message_options,
   SHARED_DOCS,
-  SHARED_LINKS
+  SHARED_LINKS,
+  CallLogs,
+  MembersList
 };
